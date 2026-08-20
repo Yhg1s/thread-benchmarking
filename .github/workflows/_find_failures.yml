@@ -1,0 +1,31 @@
+# Generated file: !!! DO NOT EDIT !!!
+---
+name: _find_failures
+
+on:
+  schedule:
+  - cron: 0 22 * * 0
+  workflow_dispatch: {}
+
+jobs:
+  find_failures:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout benchmarking
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # v6.0.2
+    - name: Setup system Python
+      uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405   # v6.2.0
+      with:
+        python-version: '3.11'
+        cache: pip
+    - name: Install dependencies from PyPI
+      run: python -m pip install -r requirements.txt
+    - name: Regenerate derived data
+      run: python -m bench_runner find_failures > failures.md
+      env:
+        GH_TOKEN: ${{ github.token }}
+    - name: Add to repo
+      uses: EndBug/add-and-commit@290ea2c423ad77ca9c62ae0f5b224379612c0321   #v10.0.0
+      with:
+        add: "['failures.md']"
+        message: Benchmarking failures

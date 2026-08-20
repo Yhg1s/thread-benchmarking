@@ -1,0 +1,101 @@
+# Generated file: !!! DO NOT EDIT !!!
+---
+name: _pystats
+
+on:
+  workflow_dispatch:
+    inputs:
+      fork:
+        description: Fork of cpython to benchmark
+        type: string
+        default: python
+      ref:
+        description: Branch, tag or (full) SHA commit to benchmark
+        type: string
+        default: main
+      benchmarks:
+        description: Benchmarks to run (comma-separated; empty runs all 
+          benchmarks)
+        type: string
+      force:
+        description: Rerun and replace results if commit already exists
+        type: boolean
+
+      tier2:
+        description: tier 2 interpreter
+        type: boolean
+        default: false
+      jit:
+        description: JIT
+        type: boolean
+        default: false
+      nogil:
+        description: free threading
+        type: boolean
+        default: false
+      tailcall:
+        description: tail-calling interpreter
+        type: boolean
+        default: false
+  workflow_call:
+    inputs:
+      fork:
+        description: Fork of cpython to benchmark
+        type: string
+      ref:
+        description: Branch, tag or (full) SHA commit to benchmark
+        type: string
+      benchmarks:
+        description: Benchmarks to run (comma-separated; empty runs all 
+          benchmarks)
+        type: string
+      dry_run:
+        description: 'Dry run: Do not commit to the repo'
+        type: boolean
+      force:
+        description: Rerun and replace results if commit already exists
+        type: boolean
+
+      tier2:
+        description: tier 2 interpreter
+        type: boolean
+        default: false
+      jit:
+        description: JIT
+        type: boolean
+        default: false
+      nogil:
+        description: free threading
+        type: boolean
+        default: false
+      tailcall:
+        description: tail-calling interpreter
+        type: boolean
+        default: false
+jobs:
+  collect-stats:
+    runs-on: [self-hosted, linux, cloud]
+    steps:
+    - name: Checkout benchmarking
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # v6.0.2
+    - name: git gc
+      run: |
+        git gc
+    - name: Build CPython and run pyperformance benchmarks
+      run: |
+        python workflow_bootstrap.py --pystats ${{ inputs.fork }} ${{ inputs.ref }} all ${{ inputs.benchmarks || 'all' }} ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ inputs.tailcall == true && 'tailcall' || '' }} --run_id ${{ github.run_id }}
+    - name: Pull benchmarking
+      run: |
+        # Another benchmarking task may have created results for the same
+        # commit while the above was running. This "magic" incantation means
+        # that any local results for this commit will override anything we
+        # just pulled in in that case.
+        git pull -s recursive -X ours --autostash --rebase
+    - name: Add data to repo
+      uses: EndBug/add-and-commit@290ea2c423ad77ca9c62ae0f5b224379612c0321   #v10.0.0
+      with:
+        add: results
+    env:
+      flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
+        && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
+        inputs.tailcall == true && 'tailcall' || '' }}

@@ -1,0 +1,66 @@
+# Generated file: !!! DO NOT EDIT !!!
+---
+name: _notify
+
+on:
+  workflow_call:
+    inputs:
+      fork:
+        type: string
+      ref:
+        type: string
+      head:
+        type: string
+      date:
+        type: string
+      version:
+        type: string
+
+      tier2:
+        description: tier 2 interpreter
+        type: boolean
+        default: false
+      jit:
+        description: JIT
+        type: boolean
+        default: false
+      nogil:
+        description: free threading
+        type: boolean
+        default: false
+      tailcall:
+        description: tail-calling interpreter
+        type: boolean
+        default: false
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: 
+        technote-space/workflow-conclusion-action@45ce8e0eb155657ab8ccf346ade734257fd196a5       #v3.0.3
+    - name: Checkout benchmarking
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # v6.0.2
+      with:
+        persist-credentials: false
+    - name: Setup system Python
+      uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405   # v6.2.0
+      with:
+        python-version: '3.11'
+        cache: pip
+    - name: Install dependencies from PyPI
+      run: |
+        pip install -r requirements.txt
+    - name: Send notifications
+      if: env.WORKFLOW_CONCLUSION == 'success'
+      run: python -m bench_runner notify --fork ${{ inputs.fork }} --ref ${{ 
+        inputs.ref }} --head ${{ inputs.head }} --date ${{ inputs.date }} 
+        --version ${{ inputs.version }} --flags ${{ inputs.tier2 == true && 
+        'tier2' || '' }},${{ inputs.jit == true && 'jit' || '' }},${{ 
+        inputs.nogil == true && 'nogil' || '' }},${{ inputs.tailcall == true && 
+        'tailcall' || '' }}
+      env:
+        GH_TOKEN: ${{ github.token }}
+    env:
+      flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
+        && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
+        inputs.tailcall == true && 'tailcall' || '' }}
