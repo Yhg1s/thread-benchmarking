@@ -1,0 +1,14 @@
+{
+  "bm-20251007-3.14.0-ebf955d/bm-20251007-centurion_clang22-x86_64-python-v3.14.0-3.14.0-ebf955d.json,bm-20251007-3.14.0-ebf955d-NOGIL/bm-20251007-centurion_clang22-x86_64-python-v3.14.0-3.14.0-ebf955d.json": 1.46,
+  "bm-20251007-3.14.0-ebf955d/bm-20251007-centurion_gcc15-x86_64-python-v3.14.0-3.14.0-ebf955d.json,bm-20251007-3.14.0-ebf955d-NOGIL/bm-20251007-centurion_gcc15-x86_64-python-v3.14.0-3.14.0-ebf955d.json": 1.48,
+  "bm-20251007-3.14.0-ebf955d/bm-20251007-centurion_gcc9-x86_64-python-v3.14.0-3.14.0-ebf955d.json,bm-20251007-3.14.0-ebf955d-NOGIL/bm-20251007-centurion_gcc9-x86_64-python-v3.14.0-3.14.0-ebf955d.json": 1.48,
+  "bm-20251007-3.14.0-ebf955d/bm-20251007-centurion_gcc9-x86_64-python-v3.14.0-3.14.0-ebf955d.json,bm-20251007-3.14.0-ebf955d/bm-20251007-centurion_clang22-x86_64-python-v3.14.0-3.14.0-ebf955d.json": 1.03,
+  "bm-20251007-3.14.0-ebf955d/bm-20251007-centurion_gcc9-x86_64-python-v3.14.0-3.14.0-ebf955d.json,bm-20251007-3.14.0-ebf955d/bm-20251007-centurion_gcc15-x86_64-python-v3.14.0-3.14.0-ebf955d.json": 0.98,
+  "bm-20251007-3.14.0-ebf955d/bm-20251007-centurion_gcc9-x86_64-python-v3.14.0-3.14.0-ebf955d.json,bm-20251007-3.14.0-ebf955d/bm-20251007-centurion_gcc9-x86_64-python-v3.14.0-3.14.0-ebf955d.json": 1.0,
+  "bm-20260804-3.15.0rc1-37e98da/bm-20260804-centurion_clang22-x86_64-python-v3.15.0rc1-3.15.0rc1-37e98da.json,bm-20260804-3.15.0rc1-37e98da-NOGIL/bm-20260804-centurion_clang22-x86_64-python-v3.15.0rc1-3.15.0rc1-37e98da.json": 1.57,
+  "bm-20260804-3.15.0rc1-37e98da/bm-20260804-centurion_gcc15-x86_64-python-v3.15.0rc1-3.15.0rc1-37e98da.json,bm-20260804-3.15.0rc1-37e98da-NOGIL/bm-20260804-centurion_gcc15-x86_64-python-v3.15.0rc1-3.15.0rc1-37e98da.json": 1.6,
+  "bm-20260804-3.15.0rc1-37e98da/bm-20260804-centurion_gcc9-x86_64-python-v3.15.0rc1-3.15.0rc1-37e98da.json,bm-20260804-3.15.0rc1-37e98da-NOGIL/bm-20260804-centurion_gcc9-x86_64-python-v3.15.0rc1-3.15.0rc1-37e98da.json": 1.57,
+  "bm-20260804-3.15.0rc1-37e98da/bm-20260804-centurion_gcc9-x86_64-python-v3.15.0rc1-3.15.0rc1-37e98da.json,bm-20260804-3.15.0rc1-37e98da/bm-20260804-centurion_clang22-x86_64-python-v3.15.0rc1-3.15.0rc1-37e98da.json": 1.02,
+  "bm-20260804-3.15.0rc1-37e98da/bm-20260804-centurion_gcc9-x86_64-python-v3.15.0rc1-3.15.0rc1-37e98da.json,bm-20260804-3.15.0rc1-37e98da/bm-20260804-centurion_gcc15-x86_64-python-v3.15.0rc1-3.15.0rc1-37e98da.json": 0.97,
+  "bm-20260804-3.15.0rc1-37e98da/bm-20260804-centurion_gcc9-x86_64-python-v3.15.0rc1-3.15.0rc1-37e98da.json,bm-20260804-3.15.0rc1-37e98da/bm-20260804-centurion_gcc9-x86_64-python-v3.15.0rc1-3.15.0rc1-37e98da.json": 1.0
+}

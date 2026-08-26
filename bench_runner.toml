@@ -10,7 +10,17 @@ compare_to_default = ["NOGIL", "JIT"]
 
 [benchmarks]
 # List any benchmarks you want to exclude from results here
-excluded_benchmarks = []
+excluded_benchmarks = [
+    # Fail to install deps
+    "djangocms",
+    "gevent_hub",
+    "kinto",
+    "pytorch_alexnet_inference",
+    # Fail to run
+    "aiohttp",
+    "flaskblogging",
+    "gunicorn",
+]
 
 [notify]
 # The number of the issue in your repo that will have comments added to
@@ -65,6 +75,8 @@ plot.color = "C6"
 use_cores = 8
 available = true
 github_runner_name = "centurion"
+loops_table_file = "centurion-loops.json"
+no_calibrate = true
 env.PYTHONHASHSEED = "42"
 env.LDFLAGS = "-fuse-ld=lld"
 env.CC = "clang-22"
@@ -86,6 +98,8 @@ plot.color = "C8"
 use_cores = 8
 available = true
 github_runner_name = "centurion"
+loops_table_file = "centurion-loops.json"
+no_calibrate = true
 env.PYTHONHASHSEED = "42"
 env.CC = "gcc-15"
 env.CXX = "g++-15"
@@ -102,8 +116,52 @@ plot.color = "C2"
 use_cores = 8
 available = true
 github_runner_name = "centurion"
+loops_table_file = "centurion-loops.json"
+no_calibrate = true
 env.PYTHONHASHSEED = "42"
 env.CC = "gcc-9"
 env.CXX = "g++-9"
 env.CPU_AFFINITY = "12,13,14,15,16,17,18,19"
+
+[groups.centurion]
+runners = ["centurion_gcc9", "centurion_gcc15", "centurion_clang22"]
+
+
+[longitudinal_plot]
+subplots = [
+    { base = "3.13.0", version = "3.14" },
+    { base = "3.13.0", version = "3.14", flags = ["NOGIL"] },
+    { base = "3.13.0", version = "3.15" },
+    { base = "3.13.0", version = "3.15", flags = ["NOGIL"] },
+]
+
+[benchmark_longitudinal_plot]
+base = "3.13.0"
+version = "3.14"
+runners = ["centurion_clang22", "centurion_gcc15", "centurion_gcc9"]
+
+[[flag_effect_plot.subplots]]
+name = "free-threading 3.14"
+version = "3.14"
+head_flags = ["NOGIL"]
+
+[[flag_effect_plot.subplots]]
+name = "gcc versions (vs. gcc-9) 3.14"
+version = "3.14"
+head_flags = []
+runner_map = { centurion = "centurion_gcc9" }
+
+[[flag_effect_plot.subplots]]
+name = "free-threading 3.15"
+version = "3.15"
+head_flags = ["NOGIL"]
+
+[[flag_effect_plot.subplots]]
+name = "compiler versions (vs. gcc-9) 3.15"
+version = "3.15"
+head_flags = []
+runner_map = { centurion = "centurion_gcc9" }
+
+[publish_mirror]
+skip = true
 
