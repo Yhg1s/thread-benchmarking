@@ -149,7 +149,8 @@ jobs:
           profiling/results
 
     if: ${{ (inputs.machine == 'linux-x86_64-centurion_clang22' || 
-      inputs.machine == '__really_all' || inputs.machine == 'all') }}
+      inputs.machine == '__really_all' || inputs.machine == 'all' || 
+      inputs.machine == 'centurion') }}
     env:
       flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
         && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
@@ -209,7 +210,8 @@ jobs:
           profiling/results
 
     if: ${{ (inputs.machine == 'linux-x86_64-centurion_gcc15' || inputs.machine 
-      == '__really_all' || inputs.machine == 'all') }}
+      == '__really_all' || inputs.machine == 'all' || inputs.machine == 
+      'centurion') }}
     env:
       flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
         && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
@@ -269,7 +271,8 @@ jobs:
           profiling/results
 
     if: ${{ (inputs.machine == 'linux-x86_64-centurion_gcc9' || inputs.machine 
-      == '__really_all' || inputs.machine == 'all') }}
+      == '__really_all' || inputs.machine == 'all' || inputs.machine == 
+      'centurion') }}
     env:
       flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
         && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
