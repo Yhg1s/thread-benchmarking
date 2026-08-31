@@ -17,5 +17,11 @@
   "bm-20260113-3.15.0a4-43cd277/bm-20260113-centurion_gcc9-x86_64-python-v3.15.0a4-3.15.0a4-43cd277.json,bm-20260113-3.15.0a4-43cd277-NOGIL/bm-20260113-centurion_gcc9-x86_64-python-v3.15.0a4-3.15.0a4-43cd277.json": 1.43,
   "bm-20260113-3.15.0a4-43cd277/bm-20260113-centurion_gcc9-x86_64-python-v3.15.0a4-3.15.0a4-43cd277.json,bm-20260113-3.15.0a4-43cd277/bm-20260113-centurion_clang22-x86_64-python-v3.15.0a4-3.15.0a4-43cd277.json": 1.02,
   "bm-20260113-3.15.0a4-43cd277/bm-20260113-centurion_gcc9-x86_64-python-v3.15.0a4-3.15.0a4-43cd277.json,bm-20260113-3.15.0a4-43cd277/bm-20260113-centurion_gcc15-x86_64-python-v3.15.0a4-3.15.0a4-43cd277.json": 0.97,
-  "bm-20260113-3.15.0a4-43cd277/bm-20260113-centurion_gcc9-x86_64-python-v3.15.0a4-3.15.0a4-43cd277.json,bm-20260113-3.15.0a4-43cd277/bm-20260113-centurion_gcc9-x86_64-python-v3.15.0a4-3.15.0a4-43cd277.json": 1.0
+  "bm-20260113-3.15.0a4-43cd277/bm-20260113-centurion_gcc9-x86_64-python-v3.15.0a4-3.15.0a4-43cd277.json,bm-20260113-3.15.0a4-43cd277/bm-20260113-centurion_gcc9-x86_64-python-v3.15.0a4-3.15.0a4-43cd277.json": 1.0,
+  "bm-20251118-3.15.0a2-a625628/bm-20251118-centurion_clang22-x86_64-python-v3.15.0a2-3.15.0a2-a625628.json,bm-20251118-3.15.0a2-a625628-NOGIL/bm-20251118-centurion_clang22-x86_64-python-v3.15.0a2-3.15.0a2-a625628.json": 1.46,
+  "bm-20251118-3.15.0a2-a625628/bm-20251118-centurion_gcc15-x86_64-python-v3.15.0a2-3.15.0a2-a625628.json,bm-20251118-3.15.0a2-a625628-NOGIL/bm-20251118-centurion_gcc15-x86_64-python-v3.15.0a2-3.15.0a2-a625628.json": 1.48,
+  "bm-20251118-3.15.0a2-a625628/bm-20251118-centurion_gcc9-x86_64-python-v3.15.0a2-3.15.0a2-a625628.json,bm-20251118-3.15.0a2-a625628-NOGIL/bm-20251118-centurion_gcc9-x86_64-python-v3.15.0a2-3.15.0a2-a625628.json": 1.45,
+  "bm-20251118-3.15.0a2-a625628/bm-20251118-centurion_gcc9-x86_64-python-v3.15.0a2-3.15.0a2-a625628.json,bm-20251118-3.15.0a2-a625628/bm-20251118-centurion_clang22-x86_64-python-v3.15.0a2-3.15.0a2-a625628.json": 1.03,
+  "bm-20251118-3.15.0a2-a625628/bm-20251118-centurion_gcc9-x86_64-python-v3.15.0a2-3.15.0a2-a625628.json,bm-20251118-3.15.0a2-a625628/bm-20251118-centurion_gcc15-x86_64-python-v3.15.0a2-3.15.0a2-a625628.json": 0.98,
+  "bm-20251118-3.15.0a2-a625628/bm-20251118-centurion_gcc9-x86_64-python-v3.15.0a2-3.15.0a2-a625628.json,bm-20251118-3.15.0a2-a625628/bm-20251118-centurion_gcc9-x86_64-python-v3.15.0a2-3.15.0a2-a625628.json": 1.0
 }
