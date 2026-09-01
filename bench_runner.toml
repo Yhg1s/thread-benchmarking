@@ -146,10 +146,10 @@ subplots = [
     { base = "3.13.0", version = "3.15", flags = ["NOGIL"] },
 ]
 
-[benchmark_longitudinal_plot]
-base = "3.13.0"
-version = "3.14"
-runners = ["centurion_clang22", "centurion_gcc15", "centurion_gcc9"]
+#[benchmark_longitudinal_plot]
+#base = "3.13.0"
+#version = "3.14"
+#runners = ["centurion_clang22", "centurion_gcc15", "centurion_gcc9"]
 
 [[flag_effect_plot.subplots]]
 name = "free-threading 3.14"
