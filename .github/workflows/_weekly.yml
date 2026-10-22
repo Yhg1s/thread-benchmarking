@@ -54,15 +54,62 @@ jobs:
     if: ${{ always() }}
     with:
       force: false
-    needs: [pystats, pystats-tier2, weekly-default-scaleway-bench1_clang22, 
+    needs: [pystats, pystats-tier2, weekly-default-scaleway-bench1_clang17, 
+        weekly-default-scaleway-bench1_clang19, 
+        weekly-default-scaleway-bench1_clang21, 
+        weekly-default-scaleway-bench1_clang22, 
+        weekly-default-scaleway-bench1_gcc11, 
+        weekly-default-scaleway-bench1_gcc13, 
         weekly-default-scaleway-bench1_gcc15, 
-        weekly-default-scaleway-bench1_gcc9]
+        weekly-default-scaleway-bench1_gcc16]
     secrets: inherit
 
   publish:
     uses: ./.github/workflows/_publish.yml
     if: ${{ always() }}
     needs: [generate]
+    secrets: inherit
+  weekly-default-scaleway-bench1_clang17:
+    uses: ./.github/workflows/_benchmark.yml
+    needs: determine_head
+    with:
+      fork: python
+      ref: ${{ needs.determine_head.outputs.commit }}
+      machine: linux-x86_64-scaleway-bench1_clang17
+      benchmarks: all_and_excluded
+      pgo: true
+      tier2: false
+      jit: false
+      nogil: false
+      tailcall: false
+    secrets: inherit
+  weekly-default-scaleway-bench1_clang19:
+    uses: ./.github/workflows/_benchmark.yml
+    needs: determine_head
+    with:
+      fork: python
+      ref: ${{ needs.determine_head.outputs.commit }}
+      machine: linux-x86_64-scaleway-bench1_clang19
+      benchmarks: all_and_excluded
+      pgo: true
+      tier2: false
+      jit: false
+      nogil: false
+      tailcall: false
+    secrets: inherit
+  weekly-default-scaleway-bench1_clang21:
+    uses: ./.github/workflows/_benchmark.yml
+    needs: determine_head
+    with:
+      fork: python
+      ref: ${{ needs.determine_head.outputs.commit }}
+      machine: linux-x86_64-scaleway-bench1_clang21
+      benchmarks: all_and_excluded
+      pgo: true
+      tier2: false
+      jit: false
+      nogil: false
+      tailcall: false
     secrets: inherit
   weekly-default-scaleway-bench1_clang22:
     uses: ./.github/workflows/_benchmark.yml
@@ -71,6 +118,34 @@ jobs:
       fork: python
       ref: ${{ needs.determine_head.outputs.commit }}
       machine: linux-x86_64-scaleway-bench1_clang22
+      benchmarks: all_and_excluded
+      pgo: true
+      tier2: false
+      jit: false
+      nogil: false
+      tailcall: false
+    secrets: inherit
+  weekly-default-scaleway-bench1_gcc11:
+    uses: ./.github/workflows/_benchmark.yml
+    needs: determine_head
+    with:
+      fork: python
+      ref: ${{ needs.determine_head.outputs.commit }}
+      machine: linux-x86_64-scaleway-bench1_gcc11
+      benchmarks: all_and_excluded
+      pgo: true
+      tier2: false
+      jit: false
+      nogil: false
+      tailcall: false
+    secrets: inherit
+  weekly-default-scaleway-bench1_gcc13:
+    uses: ./.github/workflows/_benchmark.yml
+    needs: determine_head
+    with:
+      fork: python
+      ref: ${{ needs.determine_head.outputs.commit }}
+      machine: linux-x86_64-scaleway-bench1_gcc13
       benchmarks: all_and_excluded
       pgo: true
       tier2: false
@@ -92,13 +167,13 @@ jobs:
       nogil: false
       tailcall: false
     secrets: inherit
-  weekly-default-scaleway-bench1_gcc9:
+  weekly-default-scaleway-bench1_gcc16:
     uses: ./.github/workflows/_benchmark.yml
     needs: determine_head
     with:
       fork: python
       ref: ${{ needs.determine_head.outputs.commit }}
-      machine: linux-x86_64-scaleway-bench1_gcc9
+      machine: linux-x86_64-scaleway-bench1_gcc16
       benchmarks: all_and_excluded
       pgo: true
       tier2: false

@@ -22,8 +22,13 @@ on:
         options:
         - scaleway-bench1
         - linux-x86_64-scaleway-bench1_clang22
+        - linux-x86_64-scaleway-bench1_clang17
+        - linux-x86_64-scaleway-bench1_clang19
+        - linux-x86_64-scaleway-bench1_clang21
+        - linux-x86_64-scaleway-bench1_gcc16
         - linux-x86_64-scaleway-bench1_gcc15
-        - linux-x86_64-scaleway-bench1_gcc9
+        - linux-x86_64-scaleway-bench1_gcc13
+        - linux-x86_64-scaleway-bench1_gcc11
         - all
         - __really_all
       benchmarks:

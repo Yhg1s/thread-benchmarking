@@ -96,7 +96,89 @@ env.CXX = "clang++-22"
 # will ignore them.
 env.LLVM_AR = "/usr/bin/llvm-ar-22"
 env.LLVM_PROFDATA = "/usr/bin/llvm-profdata-22"
-env.CPU_AFFINITY = "12,13,14,15,16,17,18,19"
+
+[runners.scaleway-bench1_clang17]
+os = "linux"
+arch = "x86_64"
+hostname = "scaleway-bench1"
+plot.name = "scaleway-bench1 clang17"
+plot.style = "dashed"
+plot.marker = "1"
+plot.color = "C6"
+use_cores = 8
+available = true
+github_runner_name = "scaleway-bench1"
+loops_table_file = "scaleway-bench1-loops.json"
+no_calibrate = true
+env.PYTHONHASHSEED = "42"
+env.LDFLAGS = "-fuse-ld=lld"
+env.CC = "clang-17"
+env.CXX = "clang++-17"
+# The LLVM_AR/LLVM_PROFDATA settings _have_ to be full paths, or configure
+# will ignore them.
+env.LLVM_AR = "/usr/bin/llvm-ar-17"
+env.LLVM_PROFDATA = "/usr/bin/llvm-profdata-17"
+
+[runners.scaleway-bench1_clang19]
+os = "linux"
+arch = "x86_64"
+hostname = "scaleway-bench1"
+plot.name = "scaleway-bench1 clang19"
+plot.style = "dashed"
+plot.marker = "1"
+plot.color = "C6"
+use_cores = 8
+available = true
+github_runner_name = "scaleway-bench1"
+loops_table_file = "scaleway-bench1-loops.json"
+no_calibrate = true
+env.PYTHONHASHSEED = "42"
+env.LDFLAGS = "-fuse-ld=lld"
+env.CC = "clang-19"
+env.CXX = "clang++-19"
+# The LLVM_AR/LLVM_PROFDATA settings _have_ to be full paths, or configure
+# will ignore them.
+env.LLVM_AR = "/usr/bin/llvm-ar-19"
+env.LLVM_PROFDATA = "/usr/bin/llvm-profdata-19"
+
+[runners.scaleway-bench1_clang21]
+os = "linux"
+arch = "x86_64"
+hostname = "scaleway-bench1"
+plot.name = "scaleway-bench1 clang21"
+plot.style = "dashed"
+plot.marker = "1"
+plot.color = "C6"
+use_cores = 8
+available = true
+github_runner_name = "scaleway-bench1"
+loops_table_file = "scaleway-bench1-loops.json"
+no_calibrate = true
+env.PYTHONHASHSEED = "42"
+env.LDFLAGS = "-fuse-ld=lld"
+env.CC = "clang-21"
+env.CXX = "clang++-21"
+# The LLVM_AR/LLVM_PROFDATA settings _have_ to be full paths, or configure
+# will ignore them.
+env.LLVM_AR = "/usr/bin/llvm-ar-21"
+env.LLVM_PROFDATA = "/usr/bin/llvm-profdata-21"
+
+[runners.scaleway-bench1_gcc16]
+os = "linux"
+arch = "x86_64"
+hostname = "scaleway-bench1"
+plot.name = "scaleway-bench1 gcc16"
+plot.style = "solid"
+plot.marker = "1"
+plot.color = "C8"
+use_cores = 8
+available = true
+github_runner_name = "scaleway-bench1"
+loops_table_file = "scaleway-bench1-loops.json"
+no_calibrate = true
+env.PYTHONHASHSEED = "42"
+env.CC = "gcc-16"
+env.CXX = "g++-16"
 
 [runners.scaleway-bench1_gcc15]
 os = "linux"
@@ -114,29 +196,52 @@ no_calibrate = true
 env.PYTHONHASHSEED = "42"
 env.CC = "gcc-15"
 env.CXX = "g++-15"
-env.CPU_AFFINITY = "12,13,14,15,16,17,18,19"
 
-[runners.scaleway-bench1_gcc9]
+[runners.scaleway-bench1_gcc13]
 os = "linux"
 arch = "x86_64"
 hostname = "scaleway-bench1"
-plot.name = "scaleway-bench1 gcc9"
+plot.name = "scaleway-bench1 gcc13"
 plot.style = "solid"
 plot.marker = "1"
-plot.color = "C2"
+plot.color = "C8"
 use_cores = 8
 available = true
 github_runner_name = "scaleway-bench1"
 loops_table_file = "scaleway-bench1-loops.json"
 no_calibrate = true
 env.PYTHONHASHSEED = "42"
-env.CC = "gcc-9"
-env.CXX = "g++-9"
-env.CPU_AFFINITY = "12,13,14,15,16,17,18,19"
+env.CC = "gcc-13"
+env.CXX = "g++-13"
+
+[runners.scaleway-bench1_gcc11]
+os = "linux"
+arch = "x86_64"
+hostname = "scaleway-bench1"
+plot.name = "scaleway-bench1 gcc11"
+plot.style = "solid"
+plot.marker = "1"
+plot.color = "C8"
+use_cores = 8
+available = true
+github_runner_name = "scaleway-bench1"
+loops_table_file = "scaleway-bench1-loops.json"
+no_calibrate = true
+env.PYTHONHASHSEED = "42"
+env.CC = "gcc-11"
+env.CXX = "g++-11"
 
 [groups.scaleway-bench1]
-runners = ["scaleway-bench1_gcc9", "scaleway-bench1_gcc15", "scaleway-bench1_clang22"]
-
+runners = [
+    "scaleway-bench1_gcc11",
+    "scaleway-bench1_gcc13",
+    "scaleway-bench1_gcc15",
+    "scaleway-bench1_gcc16",
+    "scaleway-bench1_clang17",
+    "scaleway-bench1_clang19",
+    "scaleway-bench1_clang21",
+    "scaleway-bench1_clang22"
+]
 
 [longitudinal_plot]
 subplots = [
@@ -149,7 +254,7 @@ subplots = [
 #[benchmark_longitudinal_plot]
 #base = "3.13.0"
 #version = "3.14"
-#runners = ["scaleway-bench1_clang22", "scaleway-bench1_gcc15", "scaleway-bench1_gcc9"]
+#runners = ["scaleway-bench1_clang22", "scaleway-bench1_gcc15", "scaleway-bench1_gcc11"]
 
 [[flag_effect_plot.subplots]]
 name = "free-threading 3.14"
@@ -157,10 +262,10 @@ version = "3.14"
 head_flags = ["NOGIL"]
 
 [[flag_effect_plot.subplots]]
-name = "gcc versions (vs. gcc-9) 3.14"
+name = "gcc versions (vs. gcc-11) 3.14"
 version = "3.14"
 head_flags = []
-runner_map = { scaleway-bench1 = "scaleway-bench1_gcc9" }
+runner_map = { scaleway-bench1 = "scaleway-bench1_gcc11" }
 
 [[flag_effect_plot.subplots]]
 name = "free-threading 3.15"
@@ -168,10 +273,10 @@ version = "3.15"
 head_flags = ["NOGIL"]
 
 [[flag_effect_plot.subplots]]
-name = "compiler versions (vs. gcc-9) 3.15"
+name = "compiler versions (vs. gcc-11) 3.15"
 version = "3.15"
 head_flags = []
-runner_map = { scaleway-bench1 = "scaleway-bench1_gcc9" }
+runner_map = { scaleway-bench1 = "scaleway-bench1_gcc11" }
 
 [publish_mirror]
 skip = true

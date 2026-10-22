@@ -60,8 +60,13 @@ on:
         type: choice
         options:
         - linux-x86_64-scaleway-bench1_clang22
+        - linux-x86_64-scaleway-bench1_clang17
+        - linux-x86_64-scaleway-bench1_clang19
+        - linux-x86_64-scaleway-bench1_clang21
+        - linux-x86_64-scaleway-bench1_gcc16
         - linux-x86_64-scaleway-bench1_gcc15
-        - linux-x86_64-scaleway-bench1_gcc9
+        - linux-x86_64-scaleway-bench1_gcc13
+        - linux-x86_64-scaleway-bench1_gcc11
         - all
       benchmarks:
         description: Benchmarks to run (comma-separated; empty runs all 
@@ -104,7 +109,6 @@ jobs:
         echo "CXX=clang++-22" >> $GITHUB_ENV
         echo "LLVM_AR=/usr/bin/llvm-ar-22" >> $GITHUB_ENV
         echo "LLVM_PROFDATA=/usr/bin/llvm-profdata-22" >> $GITHUB_ENV
-        echo "CPU_AFFINITY=12,13,14,15,16,17,18,19" >> $GITHUB_ENV
         echo "BENCHMARK_MACHINE_NICKNAME=scaleway-bench1_clang22" >> $GITHUB_ENV
         echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway-bench1_clang22" >> $GITHUB_ENV
     - name: Checkout benchmarking
@@ -155,6 +159,255 @@ jobs:
       flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
         && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
         inputs.tailcall == true && 'tailcall' || '' }}
+  benchmark-linux-x86_64-scaleway-bench1_clang17:
+    runs-on: [self-hosted, linux, bare-metal, scaleway-bench1]
+    timeout-minutes: 1440
+
+    steps:
+    - name: Setup environment
+      run: |-
+        echo "PYTHONHASHSEED=42" >> $GITHUB_ENV
+        echo "LDFLAGS=-fuse-ld=lld" >> $GITHUB_ENV
+        echo "CC=clang-17" >> $GITHUB_ENV
+        echo "CXX=clang++-17" >> $GITHUB_ENV
+        echo "LLVM_AR=/usr/bin/llvm-ar-17" >> $GITHUB_ENV
+        echo "LLVM_PROFDATA=/usr/bin/llvm-profdata-17" >> $GITHUB_ENV
+        echo "BENCHMARK_MACHINE_NICKNAME=scaleway-bench1_clang17" >> $GITHUB_ENV
+        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway-bench1_clang17" >> $GITHUB_ENV
+    - name: Checkout benchmarking
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # v6.0.2
+    - name: git gc
+      run: |
+        git gc
+    - uses: fregante/setup-git-user@024bc0b8e177d7e77203b48dab6fb45666854b35   # v2.0.2
+    - name: Building Python and running pyperformance
+      run: |
+        setarch -R python workflow_bootstrap.py ${{ inputs.fork }} ${{ inputs.ref }} \
+            ${{ (inputs.machine == 'all' || inputs.machine == '__really_all') && inputs.machine || '"$BENCHMARK_RUNNER_NAME"' }} \
+            ${{ inputs.benchmarks || 'all' }} ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ inputs.tailcall == true && 'tailcall' || '' }} ${{ inputs.force && '--force' || '' }} ${{ inputs.pgo && '--pgo' || '' }} ${{ inputs.perf && '--perf' || '' }} --run_id ${{ github.run_id }}
+      # Pull again, since another job may have committed results in the meantime
+    - name: Pull benchmarking
+      if: ${{ !inputs.perf }}
+      run: |
+        # Another benchmarking task may have created results for the same
+        # commit while the above was running. This "magic" incantation means
+        # that any local results for this commit will override anything we
+        # just pulled in in that case.
+        git pull -s recursive -X ours --autostash --rebase
+    - name: Adding data to repo
+      if: ${{ !inputs.perf }}
+      uses: EndBug/add-and-commit@290ea2c423ad77ca9c62ae0f5b224379612c0321   #v10.0.0
+      with:
+        add: results
+    - name: Upload benchmark artifacts
+      if: ${{ !inputs.perf }}
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a   # v7.0.0
+      with:
+        name: benchmark
+        path: |
+          benchmark.json
+        overwrite: true
+    - name: Upload perf artifacts
+      if: ${{ inputs.perf }}
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a   # v7.0.0
+      with:
+        name: perf
+        path: |
+          profiling/results
+
+    if: ${{ (inputs.machine == 'linux-x86_64-scaleway-bench1_clang17' || 
+      inputs.machine == '__really_all' || inputs.machine == 'all' || 
+      inputs.machine == 'scaleway-bench1') }}
+    env:
+      flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
+        && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
+        inputs.tailcall == true && 'tailcall' || '' }}
+  benchmark-linux-x86_64-scaleway-bench1_clang19:
+    runs-on: [self-hosted, linux, bare-metal, scaleway-bench1]
+    timeout-minutes: 1440
+
+    steps:
+    - name: Setup environment
+      run: |-
+        echo "PYTHONHASHSEED=42" >> $GITHUB_ENV
+        echo "LDFLAGS=-fuse-ld=lld" >> $GITHUB_ENV
+        echo "CC=clang-19" >> $GITHUB_ENV
+        echo "CXX=clang++-19" >> $GITHUB_ENV
+        echo "LLVM_AR=/usr/bin/llvm-ar-19" >> $GITHUB_ENV
+        echo "LLVM_PROFDATA=/usr/bin/llvm-profdata-19" >> $GITHUB_ENV
+        echo "BENCHMARK_MACHINE_NICKNAME=scaleway-bench1_clang19" >> $GITHUB_ENV
+        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway-bench1_clang19" >> $GITHUB_ENV
+    - name: Checkout benchmarking
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # v6.0.2
+    - name: git gc
+      run: |
+        git gc
+    - uses: fregante/setup-git-user@024bc0b8e177d7e77203b48dab6fb45666854b35   # v2.0.2
+    - name: Building Python and running pyperformance
+      run: |
+        setarch -R python workflow_bootstrap.py ${{ inputs.fork }} ${{ inputs.ref }} \
+            ${{ (inputs.machine == 'all' || inputs.machine == '__really_all') && inputs.machine || '"$BENCHMARK_RUNNER_NAME"' }} \
+            ${{ inputs.benchmarks || 'all' }} ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ inputs.tailcall == true && 'tailcall' || '' }} ${{ inputs.force && '--force' || '' }} ${{ inputs.pgo && '--pgo' || '' }} ${{ inputs.perf && '--perf' || '' }} --run_id ${{ github.run_id }}
+      # Pull again, since another job may have committed results in the meantime
+    - name: Pull benchmarking
+      if: ${{ !inputs.perf }}
+      run: |
+        # Another benchmarking task may have created results for the same
+        # commit while the above was running. This "magic" incantation means
+        # that any local results for this commit will override anything we
+        # just pulled in in that case.
+        git pull -s recursive -X ours --autostash --rebase
+    - name: Adding data to repo
+      if: ${{ !inputs.perf }}
+      uses: EndBug/add-and-commit@290ea2c423ad77ca9c62ae0f5b224379612c0321   #v10.0.0
+      with:
+        add: results
+    - name: Upload benchmark artifacts
+      if: ${{ !inputs.perf }}
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a   # v7.0.0
+      with:
+        name: benchmark
+        path: |
+          benchmark.json
+        overwrite: true
+    - name: Upload perf artifacts
+      if: ${{ inputs.perf }}
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a   # v7.0.0
+      with:
+        name: perf
+        path: |
+          profiling/results
+
+    if: ${{ (inputs.machine == 'linux-x86_64-scaleway-bench1_clang19' || 
+      inputs.machine == '__really_all' || inputs.machine == 'all' || 
+      inputs.machine == 'scaleway-bench1') }}
+    env:
+      flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
+        && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
+        inputs.tailcall == true && 'tailcall' || '' }}
+  benchmark-linux-x86_64-scaleway-bench1_clang21:
+    runs-on: [self-hosted, linux, bare-metal, scaleway-bench1]
+    timeout-minutes: 1440
+
+    steps:
+    - name: Setup environment
+      run: |-
+        echo "PYTHONHASHSEED=42" >> $GITHUB_ENV
+        echo "LDFLAGS=-fuse-ld=lld" >> $GITHUB_ENV
+        echo "CC=clang-21" >> $GITHUB_ENV
+        echo "CXX=clang++-21" >> $GITHUB_ENV
+        echo "LLVM_AR=/usr/bin/llvm-ar-21" >> $GITHUB_ENV
+        echo "LLVM_PROFDATA=/usr/bin/llvm-profdata-21" >> $GITHUB_ENV
+        echo "BENCHMARK_MACHINE_NICKNAME=scaleway-bench1_clang21" >> $GITHUB_ENV
+        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway-bench1_clang21" >> $GITHUB_ENV
+    - name: Checkout benchmarking
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # v6.0.2
+    - name: git gc
+      run: |
+        git gc
+    - uses: fregante/setup-git-user@024bc0b8e177d7e77203b48dab6fb45666854b35   # v2.0.2
+    - name: Building Python and running pyperformance
+      run: |
+        setarch -R python workflow_bootstrap.py ${{ inputs.fork }} ${{ inputs.ref }} \
+            ${{ (inputs.machine == 'all' || inputs.machine == '__really_all') && inputs.machine || '"$BENCHMARK_RUNNER_NAME"' }} \
+            ${{ inputs.benchmarks || 'all' }} ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ inputs.tailcall == true && 'tailcall' || '' }} ${{ inputs.force && '--force' || '' }} ${{ inputs.pgo && '--pgo' || '' }} ${{ inputs.perf && '--perf' || '' }} --run_id ${{ github.run_id }}
+      # Pull again, since another job may have committed results in the meantime
+    - name: Pull benchmarking
+      if: ${{ !inputs.perf }}
+      run: |
+        # Another benchmarking task may have created results for the same
+        # commit while the above was running. This "magic" incantation means
+        # that any local results for this commit will override anything we
+        # just pulled in in that case.
+        git pull -s recursive -X ours --autostash --rebase
+    - name: Adding data to repo
+      if: ${{ !inputs.perf }}
+      uses: EndBug/add-and-commit@290ea2c423ad77ca9c62ae0f5b224379612c0321   #v10.0.0
+      with:
+        add: results
+    - name: Upload benchmark artifacts
+      if: ${{ !inputs.perf }}
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a   # v7.0.0
+      with:
+        name: benchmark
+        path: |
+          benchmark.json
+        overwrite: true
+    - name: Upload perf artifacts
+      if: ${{ inputs.perf }}
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a   # v7.0.0
+      with:
+        name: perf
+        path: |
+          profiling/results
+
+    if: ${{ (inputs.machine == 'linux-x86_64-scaleway-bench1_clang21' || 
+      inputs.machine == '__really_all' || inputs.machine == 'all' || 
+      inputs.machine == 'scaleway-bench1') }}
+    env:
+      flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
+        && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
+        inputs.tailcall == true && 'tailcall' || '' }}
+  benchmark-linux-x86_64-scaleway-bench1_gcc16:
+    runs-on: [self-hosted, linux, bare-metal, scaleway-bench1]
+    timeout-minutes: 1440
+
+    steps:
+    - name: Setup environment
+      run: |-
+        echo "PYTHONHASHSEED=42" >> $GITHUB_ENV
+        echo "CC=gcc-16" >> $GITHUB_ENV
+        echo "CXX=g++-16" >> $GITHUB_ENV
+        echo "BENCHMARK_MACHINE_NICKNAME=scaleway-bench1_gcc16" >> $GITHUB_ENV
+        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway-bench1_gcc16" >> $GITHUB_ENV
+    - name: Checkout benchmarking
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # v6.0.2
+    - name: git gc
+      run: |
+        git gc
+    - uses: fregante/setup-git-user@024bc0b8e177d7e77203b48dab6fb45666854b35   # v2.0.2
+    - name: Building Python and running pyperformance
+      run: |
+        setarch -R python workflow_bootstrap.py ${{ inputs.fork }} ${{ inputs.ref }} \
+            ${{ (inputs.machine == 'all' || inputs.machine == '__really_all') && inputs.machine || '"$BENCHMARK_RUNNER_NAME"' }} \
+            ${{ inputs.benchmarks || 'all' }} ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ inputs.tailcall == true && 'tailcall' || '' }} ${{ inputs.force && '--force' || '' }} ${{ inputs.pgo && '--pgo' || '' }} ${{ inputs.perf && '--perf' || '' }} --run_id ${{ github.run_id }}
+      # Pull again, since another job may have committed results in the meantime
+    - name: Pull benchmarking
+      if: ${{ !inputs.perf }}
+      run: |
+        # Another benchmarking task may have created results for the same
+        # commit while the above was running. This "magic" incantation means
+        # that any local results for this commit will override anything we
+        # just pulled in in that case.
+        git pull -s recursive -X ours --autostash --rebase
+    - name: Adding data to repo
+      if: ${{ !inputs.perf }}
+      uses: EndBug/add-and-commit@290ea2c423ad77ca9c62ae0f5b224379612c0321   #v10.0.0
+      with:
+        add: results
+    - name: Upload benchmark artifacts
+      if: ${{ !inputs.perf }}
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a   # v7.0.0
+      with:
+        name: benchmark
+        path: |
+          benchmark.json
+        overwrite: true
+    - name: Upload perf artifacts
+      if: ${{ inputs.perf }}
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a   # v7.0.0
+      with:
+        name: perf
+        path: |
+          profiling/results
+
+    if: ${{ (inputs.machine == 'linux-x86_64-scaleway-bench1_gcc16' || 
+      inputs.machine == '__really_all' || inputs.machine == 'all' || 
+      inputs.machine == 'scaleway-bench1') }}
+    env:
+      flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
+        && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
+        inputs.tailcall == true && 'tailcall' || '' }}
   benchmark-linux-x86_64-scaleway-bench1_gcc15:
     runs-on: [self-hosted, linux, bare-metal, scaleway-bench1]
     timeout-minutes: 1440
@@ -165,7 +418,6 @@ jobs:
         echo "PYTHONHASHSEED=42" >> $GITHUB_ENV
         echo "CC=gcc-15" >> $GITHUB_ENV
         echo "CXX=g++-15" >> $GITHUB_ENV
-        echo "CPU_AFFINITY=12,13,14,15,16,17,18,19" >> $GITHUB_ENV
         echo "BENCHMARK_MACHINE_NICKNAME=scaleway-bench1_gcc15" >> $GITHUB_ENV
         echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway-bench1_gcc15" >> $GITHUB_ENV
     - name: Checkout benchmarking
@@ -216,7 +468,7 @@ jobs:
       flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
         && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
         inputs.tailcall == true && 'tailcall' || '' }}
-  benchmark-linux-x86_64-scaleway-bench1_gcc9:
+  benchmark-linux-x86_64-scaleway-bench1_gcc13:
     runs-on: [self-hosted, linux, bare-metal, scaleway-bench1]
     timeout-minutes: 1440
 
@@ -224,11 +476,10 @@ jobs:
     - name: Setup environment
       run: |-
         echo "PYTHONHASHSEED=42" >> $GITHUB_ENV
-        echo "CC=gcc-9" >> $GITHUB_ENV
-        echo "CXX=g++-9" >> $GITHUB_ENV
-        echo "CPU_AFFINITY=12,13,14,15,16,17,18,19" >> $GITHUB_ENV
-        echo "BENCHMARK_MACHINE_NICKNAME=scaleway-bench1_gcc9" >> $GITHUB_ENV
-        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway-bench1_gcc9" >> $GITHUB_ENV
+        echo "CC=gcc-13" >> $GITHUB_ENV
+        echo "CXX=g++-13" >> $GITHUB_ENV
+        echo "BENCHMARK_MACHINE_NICKNAME=scaleway-bench1_gcc13" >> $GITHUB_ENV
+        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway-bench1_gcc13" >> $GITHUB_ENV
     - name: Checkout benchmarking
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # v6.0.2
     - name: git gc
@@ -270,7 +521,67 @@ jobs:
         path: |
           profiling/results
 
-    if: ${{ (inputs.machine == 'linux-x86_64-scaleway-bench1_gcc9' || 
+    if: ${{ (inputs.machine == 'linux-x86_64-scaleway-bench1_gcc13' || 
+      inputs.machine == '__really_all' || inputs.machine == 'all' || 
+      inputs.machine == 'scaleway-bench1') }}
+    env:
+      flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
+        && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
+        inputs.tailcall == true && 'tailcall' || '' }}
+  benchmark-linux-x86_64-scaleway-bench1_gcc11:
+    runs-on: [self-hosted, linux, bare-metal, scaleway-bench1]
+    timeout-minutes: 1440
+
+    steps:
+    - name: Setup environment
+      run: |-
+        echo "PYTHONHASHSEED=42" >> $GITHUB_ENV
+        echo "CC=gcc-11" >> $GITHUB_ENV
+        echo "CXX=g++-11" >> $GITHUB_ENV
+        echo "BENCHMARK_MACHINE_NICKNAME=scaleway-bench1_gcc11" >> $GITHUB_ENV
+        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway-bench1_gcc11" >> $GITHUB_ENV
+    - name: Checkout benchmarking
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # v6.0.2
+    - name: git gc
+      run: |
+        git gc
+    - uses: fregante/setup-git-user@024bc0b8e177d7e77203b48dab6fb45666854b35   # v2.0.2
+    - name: Building Python and running pyperformance
+      run: |
+        setarch -R python workflow_bootstrap.py ${{ inputs.fork }} ${{ inputs.ref }} \
+            ${{ (inputs.machine == 'all' || inputs.machine == '__really_all') && inputs.machine || '"$BENCHMARK_RUNNER_NAME"' }} \
+            ${{ inputs.benchmarks || 'all' }} ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ inputs.tailcall == true && 'tailcall' || '' }} ${{ inputs.force && '--force' || '' }} ${{ inputs.pgo && '--pgo' || '' }} ${{ inputs.perf && '--perf' || '' }} --run_id ${{ github.run_id }}
+      # Pull again, since another job may have committed results in the meantime
+    - name: Pull benchmarking
+      if: ${{ !inputs.perf }}
+      run: |
+        # Another benchmarking task may have created results for the same
+        # commit while the above was running. This "magic" incantation means
+        # that any local results for this commit will override anything we
+        # just pulled in in that case.
+        git pull -s recursive -X ours --autostash --rebase
+    - name: Adding data to repo
+      if: ${{ !inputs.perf }}
+      uses: EndBug/add-and-commit@290ea2c423ad77ca9c62ae0f5b224379612c0321   #v10.0.0
+      with:
+        add: results
+    - name: Upload benchmark artifacts
+      if: ${{ !inputs.perf }}
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a   # v7.0.0
+      with:
+        name: benchmark
+        path: |
+          benchmark.json
+        overwrite: true
+    - name: Upload perf artifacts
+      if: ${{ inputs.perf }}
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a   # v7.0.0
+      with:
+        name: perf
+        path: |
+          profiling/results
+
+    if: ${{ (inputs.machine == 'linux-x86_64-scaleway-bench1_gcc11' || 
       inputs.machine == '__really_all' || inputs.machine == 'all' || 
       inputs.machine == 'scaleway-bench1') }}
     env:
