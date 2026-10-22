@@ -20,10 +20,10 @@ on:
         default: linux-amd64
         type: choice
         options:
-        - centurion
-        - linux-x86_64-centurion_clang22
-        - linux-x86_64-centurion_gcc15
-        - linux-x86_64-centurion_gcc9
+        - scaleway-bench1
+        - linux-x86_64-scaleway-bench1_clang22
+        - linux-x86_64-scaleway-bench1_gcc15
+        - linux-x86_64-scaleway-bench1_gcc9
         - all
         - __really_all
       benchmarks:
