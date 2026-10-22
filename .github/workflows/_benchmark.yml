@@ -59,14 +59,14 @@ on:
         default: linux-amd64
         type: choice
         options:
-        - linux-x86_64-scaleway-bench1_clang22
-        - linux-x86_64-scaleway-bench1_clang17
-        - linux-x86_64-scaleway-bench1_clang19
-        - linux-x86_64-scaleway-bench1_clang21
-        - linux-x86_64-scaleway-bench1_gcc16
-        - linux-x86_64-scaleway-bench1_gcc15
-        - linux-x86_64-scaleway-bench1_gcc13
-        - linux-x86_64-scaleway-bench1_gcc11
+        - linux-x86_64-scaleway_bench1_clang22
+        - linux-x86_64-scaleway_bench1_clang17
+        - linux-x86_64-scaleway_bench1_clang19
+        - linux-x86_64-scaleway_bench1_clang21
+        - linux-x86_64-scaleway_bench1_gcc16
+        - linux-x86_64-scaleway_bench1_gcc15
+        - linux-x86_64-scaleway_bench1_gcc13
+        - linux-x86_64-scaleway_bench1_gcc11
         - all
       benchmarks:
         description: Benchmarks to run (comma-separated; empty runs all 
@@ -96,8 +96,8 @@ on:
         type: boolean
         default: false
 jobs:
-  benchmark-linux-x86_64-scaleway-bench1_clang22:
-    runs-on: [self-hosted, linux, bare-metal, scaleway-bench1]
+  benchmark-linux-x86_64-scaleway_bench1_clang22:
+    runs-on: [self-hosted, linux, bare-metal, scaleway_bench1]
     timeout-minutes: 1440
 
     steps:
@@ -109,8 +109,8 @@ jobs:
         echo "CXX=clang++-22" >> $GITHUB_ENV
         echo "LLVM_AR=/usr/bin/llvm-ar-22" >> $GITHUB_ENV
         echo "LLVM_PROFDATA=/usr/bin/llvm-profdata-22" >> $GITHUB_ENV
-        echo "BENCHMARK_MACHINE_NICKNAME=scaleway-bench1_clang22" >> $GITHUB_ENV
-        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway-bench1_clang22" >> $GITHUB_ENV
+        echo "BENCHMARK_MACHINE_NICKNAME=scaleway_bench1_clang22" >> $GITHUB_ENV
+        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway_bench1_clang22" >> $GITHUB_ENV
     - name: Checkout benchmarking
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # v6.0.2
     - name: git gc
@@ -152,15 +152,15 @@ jobs:
         path: |
           profiling/results
 
-    if: ${{ (inputs.machine == 'linux-x86_64-scaleway-bench1_clang22' || 
+    if: ${{ (inputs.machine == 'linux-x86_64-scaleway_bench1_clang22' || 
       inputs.machine == '__really_all' || inputs.machine == 'all' || 
-      inputs.machine == 'scaleway-bench1') }}
+      inputs.machine == 'scaleway_bench1') }}
     env:
       flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
         && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
         inputs.tailcall == true && 'tailcall' || '' }}
-  benchmark-linux-x86_64-scaleway-bench1_clang17:
-    runs-on: [self-hosted, linux, bare-metal, scaleway-bench1]
+  benchmark-linux-x86_64-scaleway_bench1_clang17:
+    runs-on: [self-hosted, linux, bare-metal, scaleway_bench1]
     timeout-minutes: 1440
 
     steps:
@@ -172,8 +172,8 @@ jobs:
         echo "CXX=clang++-17" >> $GITHUB_ENV
         echo "LLVM_AR=/usr/bin/llvm-ar-17" >> $GITHUB_ENV
         echo "LLVM_PROFDATA=/usr/bin/llvm-profdata-17" >> $GITHUB_ENV
-        echo "BENCHMARK_MACHINE_NICKNAME=scaleway-bench1_clang17" >> $GITHUB_ENV
-        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway-bench1_clang17" >> $GITHUB_ENV
+        echo "BENCHMARK_MACHINE_NICKNAME=scaleway_bench1_clang17" >> $GITHUB_ENV
+        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway_bench1_clang17" >> $GITHUB_ENV
     - name: Checkout benchmarking
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # v6.0.2
     - name: git gc
@@ -215,15 +215,15 @@ jobs:
         path: |
           profiling/results
 
-    if: ${{ (inputs.machine == 'linux-x86_64-scaleway-bench1_clang17' || 
+    if: ${{ (inputs.machine == 'linux-x86_64-scaleway_bench1_clang17' || 
       inputs.machine == '__really_all' || inputs.machine == 'all' || 
-      inputs.machine == 'scaleway-bench1') }}
+      inputs.machine == 'scaleway_bench1') }}
     env:
       flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
         && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
         inputs.tailcall == true && 'tailcall' || '' }}
-  benchmark-linux-x86_64-scaleway-bench1_clang19:
-    runs-on: [self-hosted, linux, bare-metal, scaleway-bench1]
+  benchmark-linux-x86_64-scaleway_bench1_clang19:
+    runs-on: [self-hosted, linux, bare-metal, scaleway_bench1]
     timeout-minutes: 1440
 
     steps:
@@ -235,8 +235,8 @@ jobs:
         echo "CXX=clang++-19" >> $GITHUB_ENV
         echo "LLVM_AR=/usr/bin/llvm-ar-19" >> $GITHUB_ENV
         echo "LLVM_PROFDATA=/usr/bin/llvm-profdata-19" >> $GITHUB_ENV
-        echo "BENCHMARK_MACHINE_NICKNAME=scaleway-bench1_clang19" >> $GITHUB_ENV
-        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway-bench1_clang19" >> $GITHUB_ENV
+        echo "BENCHMARK_MACHINE_NICKNAME=scaleway_bench1_clang19" >> $GITHUB_ENV
+        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway_bench1_clang19" >> $GITHUB_ENV
     - name: Checkout benchmarking
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # v6.0.2
     - name: git gc
@@ -278,15 +278,15 @@ jobs:
         path: |
           profiling/results
 
-    if: ${{ (inputs.machine == 'linux-x86_64-scaleway-bench1_clang19' || 
+    if: ${{ (inputs.machine == 'linux-x86_64-scaleway_bench1_clang19' || 
       inputs.machine == '__really_all' || inputs.machine == 'all' || 
-      inputs.machine == 'scaleway-bench1') }}
+      inputs.machine == 'scaleway_bench1') }}
     env:
       flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
         && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
         inputs.tailcall == true && 'tailcall' || '' }}
-  benchmark-linux-x86_64-scaleway-bench1_clang21:
-    runs-on: [self-hosted, linux, bare-metal, scaleway-bench1]
+  benchmark-linux-x86_64-scaleway_bench1_clang21:
+    runs-on: [self-hosted, linux, bare-metal, scaleway_bench1]
     timeout-minutes: 1440
 
     steps:
@@ -298,8 +298,8 @@ jobs:
         echo "CXX=clang++-21" >> $GITHUB_ENV
         echo "LLVM_AR=/usr/bin/llvm-ar-21" >> $GITHUB_ENV
         echo "LLVM_PROFDATA=/usr/bin/llvm-profdata-21" >> $GITHUB_ENV
-        echo "BENCHMARK_MACHINE_NICKNAME=scaleway-bench1_clang21" >> $GITHUB_ENV
-        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway-bench1_clang21" >> $GITHUB_ENV
+        echo "BENCHMARK_MACHINE_NICKNAME=scaleway_bench1_clang21" >> $GITHUB_ENV
+        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway_bench1_clang21" >> $GITHUB_ENV
     - name: Checkout benchmarking
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # v6.0.2
     - name: git gc
@@ -341,15 +341,15 @@ jobs:
         path: |
           profiling/results
 
-    if: ${{ (inputs.machine == 'linux-x86_64-scaleway-bench1_clang21' || 
+    if: ${{ (inputs.machine == 'linux-x86_64-scaleway_bench1_clang21' || 
       inputs.machine == '__really_all' || inputs.machine == 'all' || 
-      inputs.machine == 'scaleway-bench1') }}
+      inputs.machine == 'scaleway_bench1') }}
     env:
       flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
         && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
         inputs.tailcall == true && 'tailcall' || '' }}
-  benchmark-linux-x86_64-scaleway-bench1_gcc16:
-    runs-on: [self-hosted, linux, bare-metal, scaleway-bench1]
+  benchmark-linux-x86_64-scaleway_bench1_gcc16:
+    runs-on: [self-hosted, linux, bare-metal, scaleway_bench1]
     timeout-minutes: 1440
 
     steps:
@@ -358,8 +358,8 @@ jobs:
         echo "PYTHONHASHSEED=42" >> $GITHUB_ENV
         echo "CC=gcc-16" >> $GITHUB_ENV
         echo "CXX=g++-16" >> $GITHUB_ENV
-        echo "BENCHMARK_MACHINE_NICKNAME=scaleway-bench1_gcc16" >> $GITHUB_ENV
-        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway-bench1_gcc16" >> $GITHUB_ENV
+        echo "BENCHMARK_MACHINE_NICKNAME=scaleway_bench1_gcc16" >> $GITHUB_ENV
+        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway_bench1_gcc16" >> $GITHUB_ENV
     - name: Checkout benchmarking
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # v6.0.2
     - name: git gc
@@ -401,15 +401,15 @@ jobs:
         path: |
           profiling/results
 
-    if: ${{ (inputs.machine == 'linux-x86_64-scaleway-bench1_gcc16' || 
+    if: ${{ (inputs.machine == 'linux-x86_64-scaleway_bench1_gcc16' || 
       inputs.machine == '__really_all' || inputs.machine == 'all' || 
-      inputs.machine == 'scaleway-bench1') }}
+      inputs.machine == 'scaleway_bench1') }}
     env:
       flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
         && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
         inputs.tailcall == true && 'tailcall' || '' }}
-  benchmark-linux-x86_64-scaleway-bench1_gcc15:
-    runs-on: [self-hosted, linux, bare-metal, scaleway-bench1]
+  benchmark-linux-x86_64-scaleway_bench1_gcc15:
+    runs-on: [self-hosted, linux, bare-metal, scaleway_bench1]
     timeout-minutes: 1440
 
     steps:
@@ -418,8 +418,8 @@ jobs:
         echo "PYTHONHASHSEED=42" >> $GITHUB_ENV
         echo "CC=gcc-15" >> $GITHUB_ENV
         echo "CXX=g++-15" >> $GITHUB_ENV
-        echo "BENCHMARK_MACHINE_NICKNAME=scaleway-bench1_gcc15" >> $GITHUB_ENV
-        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway-bench1_gcc15" >> $GITHUB_ENV
+        echo "BENCHMARK_MACHINE_NICKNAME=scaleway_bench1_gcc15" >> $GITHUB_ENV
+        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway_bench1_gcc15" >> $GITHUB_ENV
     - name: Checkout benchmarking
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # v6.0.2
     - name: git gc
@@ -461,15 +461,15 @@ jobs:
         path: |
           profiling/results
 
-    if: ${{ (inputs.machine == 'linux-x86_64-scaleway-bench1_gcc15' || 
+    if: ${{ (inputs.machine == 'linux-x86_64-scaleway_bench1_gcc15' || 
       inputs.machine == '__really_all' || inputs.machine == 'all' || 
-      inputs.machine == 'scaleway-bench1') }}
+      inputs.machine == 'scaleway_bench1') }}
     env:
       flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
         && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
         inputs.tailcall == true && 'tailcall' || '' }}
-  benchmark-linux-x86_64-scaleway-bench1_gcc13:
-    runs-on: [self-hosted, linux, bare-metal, scaleway-bench1]
+  benchmark-linux-x86_64-scaleway_bench1_gcc13:
+    runs-on: [self-hosted, linux, bare-metal, scaleway_bench1]
     timeout-minutes: 1440
 
     steps:
@@ -478,8 +478,8 @@ jobs:
         echo "PYTHONHASHSEED=42" >> $GITHUB_ENV
         echo "CC=gcc-13" >> $GITHUB_ENV
         echo "CXX=g++-13" >> $GITHUB_ENV
-        echo "BENCHMARK_MACHINE_NICKNAME=scaleway-bench1_gcc13" >> $GITHUB_ENV
-        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway-bench1_gcc13" >> $GITHUB_ENV
+        echo "BENCHMARK_MACHINE_NICKNAME=scaleway_bench1_gcc13" >> $GITHUB_ENV
+        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway_bench1_gcc13" >> $GITHUB_ENV
     - name: Checkout benchmarking
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # v6.0.2
     - name: git gc
@@ -521,15 +521,15 @@ jobs:
         path: |
           profiling/results
 
-    if: ${{ (inputs.machine == 'linux-x86_64-scaleway-bench1_gcc13' || 
+    if: ${{ (inputs.machine == 'linux-x86_64-scaleway_bench1_gcc13' || 
       inputs.machine == '__really_all' || inputs.machine == 'all' || 
-      inputs.machine == 'scaleway-bench1') }}
+      inputs.machine == 'scaleway_bench1') }}
     env:
       flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
         && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 
         inputs.tailcall == true && 'tailcall' || '' }}
-  benchmark-linux-x86_64-scaleway-bench1_gcc11:
-    runs-on: [self-hosted, linux, bare-metal, scaleway-bench1]
+  benchmark-linux-x86_64-scaleway_bench1_gcc11:
+    runs-on: [self-hosted, linux, bare-metal, scaleway_bench1]
     timeout-minutes: 1440
 
     steps:
@@ -538,8 +538,8 @@ jobs:
         echo "PYTHONHASHSEED=42" >> $GITHUB_ENV
         echo "CC=gcc-11" >> $GITHUB_ENV
         echo "CXX=g++-11" >> $GITHUB_ENV
-        echo "BENCHMARK_MACHINE_NICKNAME=scaleway-bench1_gcc11" >> $GITHUB_ENV
-        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway-bench1_gcc11" >> $GITHUB_ENV
+        echo "BENCHMARK_MACHINE_NICKNAME=scaleway_bench1_gcc11" >> $GITHUB_ENV
+        echo "BENCHMARK_RUNNER_NAME=linux-x86_64-scaleway_bench1_gcc11" >> $GITHUB_ENV
     - name: Checkout benchmarking
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd   # v6.0.2
     - name: git gc
@@ -581,9 +581,9 @@ jobs:
         path: |
           profiling/results
 
-    if: ${{ (inputs.machine == 'linux-x86_64-scaleway-bench1_gcc11' || 
+    if: ${{ (inputs.machine == 'linux-x86_64-scaleway_bench1_gcc11' || 
       inputs.machine == '__really_all' || inputs.machine == 'all' || 
-      inputs.machine == 'scaleway-bench1') }}
+      inputs.machine == 'scaleway_bench1') }}
     env:
       flags: ${{ inputs.tier2 == true && 'tier2' || '' }},${{ inputs.jit == true
         && 'jit' || '' }},${{ inputs.nogil == true && 'nogil' || '' }},${{ 

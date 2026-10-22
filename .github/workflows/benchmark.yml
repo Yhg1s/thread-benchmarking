@@ -20,15 +20,15 @@ on:
         default: linux-amd64
         type: choice
         options:
-        - scaleway-bench1
-        - linux-x86_64-scaleway-bench1_clang22
-        - linux-x86_64-scaleway-bench1_clang17
-        - linux-x86_64-scaleway-bench1_clang19
-        - linux-x86_64-scaleway-bench1_clang21
-        - linux-x86_64-scaleway-bench1_gcc16
-        - linux-x86_64-scaleway-bench1_gcc15
-        - linux-x86_64-scaleway-bench1_gcc13
-        - linux-x86_64-scaleway-bench1_gcc11
+        - scaleway_bench1
+        - linux-x86_64-scaleway_bench1_clang22
+        - linux-x86_64-scaleway_bench1_clang17
+        - linux-x86_64-scaleway_bench1_clang19
+        - linux-x86_64-scaleway_bench1_clang21
+        - linux-x86_64-scaleway_bench1_gcc16
+        - linux-x86_64-scaleway_bench1_gcc15
+        - linux-x86_64-scaleway_bench1_gcc13
+        - linux-x86_64-scaleway_bench1_gcc11
         - all
         - __really_all
       benchmarks:
