@@ -7,7 +7,7 @@
 - commit date: 2025-06-11T17:36:57+02:00
 - ref: v3.13.5
 
-## linux x86_64 (centurion_gcc15)
+## unknown x86_64 (centurion_gcc15)
 
 - [GitHub Action run](https://github.com/faster-cpython/bench_runner/actions/runs/False)
 - cpu model: Intel(R) Core(TM) Ultra 7 265K

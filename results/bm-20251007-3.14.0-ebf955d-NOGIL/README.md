@@ -7,7 +7,7 @@
 - commit date: 2025-10-07T12:34:52+03:00
 - ref: v3.14.0
 
-## linux x86_64 (centurion_clang22)
+## unknown x86_64 (centurion_clang22)
 
 - [GitHub Action run](https://github.com/faster-cpython/bench_runner/actions/runs/False)
 - cpu model: Intel(R) Core(TM) Ultra 7 265K
@@ -40,7 +40,7 @@
 - [📄table](bm-20251007-centurion_clang22-x86_64-python-v3.14.0-3.14.0-ebf955d-vs-base.md)
 - [📈time plot](bm-20251007-centurion_clang22-x86_64-python-v3.14.0-3.14.0-ebf955d-vs-base.svg)
 
-## linux x86_64 (centurion_gcc15)
+## unknown x86_64 (centurion_gcc15)
 
 - [GitHub Action run](https://github.com/faster-cpython/bench_runner/actions/runs/False)
 - cpu model: Intel(R) Core(TM) Ultra 7 265K
@@ -73,7 +73,7 @@
 - [📄table](bm-20251007-centurion_gcc15-x86_64-python-v3.14.0-3.14.0-ebf955d-vs-base.md)
 - [📈time plot](bm-20251007-centurion_gcc15-x86_64-python-v3.14.0-3.14.0-ebf955d-vs-base.svg)
 
-## linux x86_64 (centurion_gcc9)
+## unknown x86_64 (centurion_gcc9)
 
 - [GitHub Action run](https://github.com/faster-cpython/bench_runner/actions/runs/False)
 - cpu model: Intel(R) Core(TM) Ultra 7 265K
@@ -108,4 +108,60 @@
 - [🔍interactive time plot](https://yhg1s.github.io/thread-benchmarking/results/bm-20251007-3.14.0-ebf955d-NOGIL/bm-20251007-centurion_gcc9-x86_64-python-v3.14.0-3.14.0-ebf955d-vs-base.html)
 - [📄table](bm-20251007-centurion_gcc9-x86_64-python-v3.14.0-3.14.0-ebf955d-vs-base.md)
 - [📈time plot](bm-20251007-centurion_gcc9-x86_64-python-v3.14.0-3.14.0-ebf955d-vs-base.svg)
+
+## linux x86_64 (scaleway_bench1_clang17)
+
+- [GitHub Action run](https://github.com/Yhg1s/thread-benchmarking/actions/runs/39896382829)
+- cpu model: Intel(R) Xeon(R) CPU E3-1220 V2 @ 3.10GHz
+- platform: Linux-7.0.0-38-generic-x86_64-with-glibc2.43
+- [raw results](bm-20251007-scaleway_bench1_clang17-x86_64-python-v3.14.0-3.14.0-ebf955d.json)
+
+## linux x86_64 (scaleway_bench1_clang19)
+
+- [GitHub Action run](https://github.com/Yhg1s/thread-benchmarking/actions/runs/39896382829)
+- cpu model: Intel(R) Xeon(R) CPU E3-1220 V2 @ 3.10GHz
+- platform: Linux-7.0.0-38-generic-x86_64-with-glibc2.43
+- [raw results](bm-20251007-scaleway_bench1_clang19-x86_64-python-v3.14.0-3.14.0-ebf955d.json)
+
+## linux x86_64 (scaleway_bench1_clang21)
+
+- [GitHub Action run](https://github.com/Yhg1s/thread-benchmarking/actions/runs/39896382829)
+- cpu model: Intel(R) Xeon(R) CPU E3-1220 V2 @ 3.10GHz
+- platform: Linux-7.0.0-38-generic-x86_64-with-glibc2.43
+- [raw results](bm-20251007-scaleway_bench1_clang21-x86_64-python-v3.14.0-3.14.0-ebf955d.json)
+
+## linux x86_64 (scaleway_bench1_clang22)
+
+- [GitHub Action run](https://github.com/Yhg1s/thread-benchmarking/actions/runs/39896382829)
+- cpu model: Intel(R) Xeon(R) CPU E3-1220 V2 @ 3.10GHz
+- platform: Linux-7.0.0-38-generic-x86_64-with-glibc2.43
+- [raw results](bm-20251007-scaleway_bench1_clang22-x86_64-python-v3.14.0-3.14.0-ebf955d.json)
+
+## linux x86_64 (scaleway_bench1_gcc11)
+
+- [GitHub Action run](https://github.com/Yhg1s/thread-benchmarking/actions/runs/39896382829)
+- cpu model: Intel(R) Xeon(R) CPU E3-1220 V2 @ 3.10GHz
+- platform: Linux-7.0.0-38-generic-x86_64-with-glibc2.43
+- [raw results](bm-20251007-scaleway_bench1_gcc11-x86_64-python-v3.14.0-3.14.0-ebf955d.json)
+
+## linux x86_64 (scaleway_bench1_gcc13)
+
+- [GitHub Action run](https://github.com/Yhg1s/thread-benchmarking/actions/runs/39896382829)
+- cpu model: Intel(R) Xeon(R) CPU E3-1220 V2 @ 3.10GHz
+- platform: Linux-7.0.0-38-generic-x86_64-with-glibc2.43
+- [raw results](bm-20251007-scaleway_bench1_gcc13-x86_64-python-v3.14.0-3.14.0-ebf955d.json)
+
+## linux x86_64 (scaleway_bench1_gcc15)
+
+- [GitHub Action run](https://github.com/Yhg1s/thread-benchmarking/actions/runs/39896382829)
+- cpu model: Intel(R) Xeon(R) CPU E3-1220 V2 @ 3.10GHz
+- platform: Linux-7.0.0-38-generic-x86_64-with-glibc2.43
+- [raw results](bm-20251007-scaleway_bench1_gcc15-x86_64-python-v3.14.0-3.14.0-ebf955d.json)
+
+## linux x86_64 (scaleway_bench1_gcc16)
+
+- [GitHub Action run](https://github.com/Yhg1s/thread-benchmarking/actions/runs/39896382829)
+- cpu model: Intel(R) Xeon(R) CPU E3-1220 V2 @ 3.10GHz
+- platform: Linux-7.0.0-38-generic-x86_64-with-glibc2.43
+- [raw results](bm-20251007-scaleway_bench1_gcc16-x86_64-python-v3.14.0-3.14.0-ebf955d.json)
 

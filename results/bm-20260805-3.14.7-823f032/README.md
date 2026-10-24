@@ -7,7 +7,7 @@
 - commit date: 2026-08-05T13:29:49+03:00
 - ref: v3.14.7
 
-## linux x86_64 (centurion_clang22)
+## unknown x86_64 (centurion_clang22)
 
 - [GitHub Action run](https://github.com/faster-cpython/bench_runner/actions/runs/False)
 - cpu model: Intel(R) Core(TM) Ultra 7 265K
@@ -30,7 +30,7 @@
 - [📄table](bm-20260805-centurion_clang22-x86_64-python-v3.14.7-3.14.7-823f032-vs-3.14.0.md)
 - [📈time plot](bm-20260805-centurion_clang22-x86_64-python-v3.14.7-3.14.7-823f032-vs-3.14.0.svg)
 
-## linux x86_64 (centurion_gcc15)
+## unknown x86_64 (centurion_gcc15)
 
 - [GitHub Action run](https://github.com/faster-cpython/bench_runner/actions/runs/False)
 - cpu model: Intel(R) Core(TM) Ultra 7 265K
@@ -53,7 +53,7 @@
 - [📄table](bm-20260805-centurion_gcc15-x86_64-python-v3.14.7-3.14.7-823f032-vs-3.14.0.md)
 - [📈time plot](bm-20260805-centurion_gcc15-x86_64-python-v3.14.7-3.14.7-823f032-vs-3.14.0.svg)
 
-## linux x86_64 (centurion_gcc9)
+## unknown x86_64 (centurion_gcc9)
 
 - [GitHub Action run](https://github.com/faster-cpython/bench_runner/actions/runs/False)
 - cpu model: Intel(R) Core(TM) Ultra 7 265K

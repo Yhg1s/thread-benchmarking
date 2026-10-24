@@ -8,7 +8,7 @@
 - commit merge base: [f46785f8bc118e0efb840af1e520777b1baa03d9](https://github.com/python/cpython/commit/f46785f8bc118e0efb840af1e520777b1baa03d9)
 - ref: v3.15.0a2
 
-## linux x86_64 (centurion_clang22)
+## unknown x86_64 (centurion_clang22)
 
 - [GitHub Action run](https://github.com/faster-cpython/bench_runner/actions/runs/False)
 - cpu model: Intel(R) Core(TM) Ultra 7 265K
@@ -33,7 +33,7 @@
 - [📄table](bm-20251118-centurion_clang22-x86_64-python-v3.15.0a2-3.15.0a2-a625628-vs-3.14.0.md)
 - [📈time plot](bm-20251118-centurion_clang22-x86_64-python-v3.15.0a2-3.15.0a2-a625628-vs-3.14.0.svg)
 
-## linux x86_64 (centurion_gcc15)
+## unknown x86_64 (centurion_gcc15)
 
 - [GitHub Action run](https://github.com/faster-cpython/bench_runner/actions/runs/False)
 - cpu model: Intel(R) Core(TM) Ultra 7 265K
@@ -58,7 +58,7 @@
 - [📄table](bm-20251118-centurion_gcc15-x86_64-python-v3.15.0a2-3.15.0a2-a625628-vs-3.14.0.md)
 - [📈time plot](bm-20251118-centurion_gcc15-x86_64-python-v3.15.0a2-3.15.0a2-a625628-vs-3.14.0.svg)
 
-## linux x86_64 (centurion_gcc9)
+## unknown x86_64 (centurion_gcc9)
 
 - [GitHub Action run](https://github.com/faster-cpython/bench_runner/actions/runs/False)
 - cpu model: Intel(R) Core(TM) Ultra 7 265K
