@@ -43,6 +43,7 @@ The 🔍 and 🔬 plots are the same data as 📈 and 🧠, but interactive: you
 ## linux x86_64 (scaleway_bench1_clang19)
 | date | fork/ref | hash/flags | vs. 3.13.0: | vs. 3.14.0: | vs. base: |
 | --- | --- | --- | ---: | ---: | ---: |
+| [2026-11-08](results/bm-20261108-3.16.0a1%2Bdev-a497a11) | python/a497a11c46c2bf096dd5 | a497a11 |  |  |  |
 | [2025-10-07](results/bm-20251007-3.14.0-ebf955d-NOGIL) | python/v3.14.0 | ebf955d (NOGIL) |  |  |  |
 
 ## linux x86_64 (scaleway_bench1_clang21)
@@ -53,6 +54,7 @@ The 🔍 and 🔬 plots are the same data as 📈 and 🧠, but interactive: you
 ## linux x86_64 (scaleway_bench1_clang22)
 | date | fork/ref | hash/flags | vs. 3.13.0: | vs. 3.14.0: | vs. base: |
 | --- | --- | --- | ---: | ---: | ---: |
+| [2026-11-08](results/bm-20261108-3.16.0a1%2Bdev-a497a11) | python/a497a11c46c2bf096dd5 | a497a11 |  |  |  |
 | [2025-10-07](results/bm-20251007-3.14.0-ebf955d-NOGIL) | python/v3.14.0 | ebf955d (NOGIL) |  |  |  |
 
 ## linux x86_64 (scaleway_bench1_gcc11)
@@ -63,6 +65,7 @@ The 🔍 and 🔬 plots are the same data as 📈 and 🧠, but interactive: you
 ## linux x86_64 (scaleway_bench1_gcc13)
 | date | fork/ref | hash/flags | vs. 3.13.0: | vs. 3.14.0: | vs. base: |
 | --- | --- | --- | ---: | ---: | ---: |
+| [2026-11-08](results/bm-20261108-3.16.0a1%2Bdev-a497a11) | python/a497a11c46c2bf096dd5 | a497a11 |  |  |  |
 | [2025-10-07](results/bm-20251007-3.14.0-ebf955d-NOGIL) | python/v3.14.0 | ebf955d (NOGIL) |  |  |  |
 
 ## linux x86_64 (scaleway_bench1_gcc15)
